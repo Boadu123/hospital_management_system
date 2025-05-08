@@ -2,26 +2,26 @@ package com.example.db;
 
 public class Doctor {
     private int employeeId;
-    private String specialty;
+    private String speciality;
 
-    public Doctor(int employeeId, String specialty) {
+    public Doctor(int employeeId, String speciality) {
         this.employeeId = employeeId;
-        this.specialty = specialty;
+        this.speciality = speciality;
     }
 
     public int getEmployeeId() {
         return employeeId;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public String getSpeciality() {
+        return speciality;
     }
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
 }

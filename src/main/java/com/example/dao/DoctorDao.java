@@ -19,7 +19,7 @@ public class DoctorDao {
         PreparedStatement preparedStatement = connection.prepareStatement(query);
 
         preparedStatement.setInt(1, doctor.getEmployeeId());
-        preparedStatement.setString(2, doctor.getSpecialty());
+        preparedStatement.setString(2, doctor.getSpeciality());
 
         preparedStatement.executeUpdate();
     }
@@ -34,7 +34,7 @@ public class DoctorDao {
         if (resultSet.next()) {
             return new Doctor(
                     resultSet.getInt("employee_id"),
-                    resultSet.getString("specialty")
+                    resultSet.getString("speciality")
             );
         } else {
             return null;
@@ -50,10 +50,10 @@ public class DoctorDao {
     }
 
     public void updateDoctor(Doctor doctor) throws SQLException {
-        String query = "UPDATE Doctor SET specialty = ? WHERE employee_id = ?";
+        String query = "UPDATE Doctor SET speciality = ? WHERE employee_id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-        preparedStatement.setString(1, doctor.getSpecialty());
+        preparedStatement.setString(1, doctor.getSpeciality());
         preparedStatement.setInt(2, doctor.getEmployeeId());
 
         preparedStatement.executeUpdate();
