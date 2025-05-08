@@ -21,34 +21,35 @@ public class Main {
             System.out.println("Connected successfully");
             EmployeeDao employeeDao = new EmployeeDao(conn);
 
-            Employee employee = new Employee(2, "John", "Asiedu", "123 Main St", "0551234567");
-            Employee employee1 = new Employee(3, "Ben", "Huv", "South Sudan", "0589234567");
+//            Employee employee4 = new Employee(5, "Inkoom", "Gertrude", "North Ghana", "0546677583");
+//
+//
+//
+//            employeeDao.addEmployee(employee4);
 
-//            employeeDao.addEmployee(employee1);
+//            employeeDao.deleteEmployee(5);
 
-//            employeeDao.deleteEmployee(1);
-
-            Employee found = employeeDao.getEmployee(3);
-
-            found.setAddress("John East");
-
-            employeeDao.updateEmployee(found);
-
-            if(found != null){
-                System.out.println(found.getFirstName());
-                System.out.println(found.getSurname());
-                System.out.println(found.getAddress());
-            }else{
-                System.out.println("[]");
-            }
-
-//            List<Employee> allEmployees = employeeDao.getAllEmployees();
-//            for (Employee emp : allEmployees) {
-//                System.out.println("ID: " + emp.getEmployeeId()
-//                        + ", Name: " + emp.getFirstName() + " " + emp.getSurname()
-//                        + ", Address: " + emp.getAddress()
-//                        + ", Phone: " + emp.getPhoneNumber());
+//            Employee found = employeeDao.getEmployee(5);
+//
+//            found.setAddress("John East");
+//
+//            employeeDao.updateEmployee(found);
+//
+//            if(found != null){
+//                System.out.println(found.getFirstName());
+//                System.out.println(found.getSurname());
+//                System.out.println(found.getAddress());
+//            }else{
+//                System.out.println("[]");
 //            }
+
+            List<Employee> allEmployees = employeeDao.getAllEmployees();
+            for (Employee emp : allEmployees) {
+                System.out.println("ID: " + emp.getEmployeeId()
+                        + ", Name: " + emp.getFirstName() + " " + emp.getSurname()
+                        + ", Address: " + emp.getAddress()
+                        + ", Phone: " + emp.getPhoneNumber());
+            }
 
 //            DoctorDao doctorDao = new DoctorDao(conn);
 //
