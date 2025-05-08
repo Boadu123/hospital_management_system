@@ -1,0 +1,67 @@
+CREATE TABLE Employee (
+    employee_id INT PRIMARY KEY,
+    surname VARCHAR(50),
+    first_name VARCHAR(50),
+    address VARCHAR(100),
+    phone_number VARCHAR(15)
+);
+CREATE TABLE Doctor (
+    employee_id INT PRIMARY KEY,
+    specialty VARCHAR(50),
+    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id)
+);
+CREATE TABLE Nurse (
+    employee_id INT PRIMARY KEY,
+    rotation VARCHAR(30),
+    salary DECIMAL(10, 2),
+    department_id INT,
+    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
+    FOREIGN KEY (department_id) REFERENCES Department(department_id)
+);
+CREATE TABLE Department (
+    department_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    building VARCHAR(50),
+    director_id INT,
+    doctor(employee_id)
+);
+CREATE TABLE Ward (
+    ward_id INT PRIMARY KEY,
+    ward_number INT, -- Local to department
+    beds INT,
+    department_id INT,
+    supervisor_id INT, -- Must be a nurse
+    FOREIGN KEY (department_id) REFERENCES Department(department_id),
+    FOREIGN KEY (supervisor_id) REFERENCES Nurse(employee_id),
+    UNIQUE (ward_number, department_id) -- Enforce local numbering
+);
+CREATE TABLE Patient (
+    patient_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    surname VARCHAR(50),
+    address VARCHAR(100),
+    phone_number VARCHAR(15)
+);
+CREATE TABLE Hospitalization (
+    hospitalization_id INT PRIMARY KEY,
+    patient_id INT,
+    ward_id INT,
+    bed_number INT,
+    diagnosis TEXT,
+    doctor_id INT,
+    admission_date DATE,
+    discharge_date DATE,
+    FOREIGN KEY (patient_id) REFERENCES Patient(patient_id),
+    FOREIGN KEY (ward_id) REFERENCES Ward(ward_id),
+    FOREIGN KEY (doctor_id) REFERENCES Doctor(employee_id)
+);
+CREATE TABLE Transfer (
+    transfer_id INT PRIMARY KEY,
+    patient_id INT,
+    from_ward_id INT,
+    to_ward_id INT,
+    transfer_date DATE,
+    FOREIGN KEY (patient_id) REFERENCES Patient(patient_id),
+    FOREIGN KEY (from_ward_id) REFERENCES Ward(ward_id),
+    FOREIGN KEY (to_ward_id) REFERENCES Ward(ward_id)
+);
